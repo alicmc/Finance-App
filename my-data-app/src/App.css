@@ -1,0 +1,27 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #d8dfd4;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.App-body {
+  background-color: #f8fbf6;
+  min-height: 90vh;
+  min-width: 100%;
+}
+
+.App-foot {
+  background-color: #d8dfd4;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+}
