@@ -13,4 +13,5 @@
     - input custom transactions
 - budget view?
 - security?
-- React based front-end?
+- ~~React based front-end?~~
+- night mode??

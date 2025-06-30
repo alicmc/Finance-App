@@ -25,3 +25,8 @@
   bottom: 0;
   width: 100vw;
 }
+
+.TheCard {
+  margin: 1vh;
+  min-height: 20vh;
+}
