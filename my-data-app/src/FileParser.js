@@ -61,35 +61,42 @@ export default function Reader() {
                     </Row>
                     <Row>
                         <Col md={6} className="mx-auto">  {/* 4 out of 12 columns = 1/3 */}
+                            <div {...getRootProps()}>
+                                {acceptedFile ? (
+                                    <>
+                                        <Card className='TheCard'>
+                                            <Card.Body>
+                                                <div className="App">
+                                                    {col.length > 0 && val.length > 0 && (
+                                                        <Pie
+                                                            data={{
+                                                                labels: col,
+                                                                datasets: [
+                                                                    {
+                                                                        label: 'My Data',
+                                                                        data: val.map(row => parseFloat(row[1])),
+                                                                        backgroundColor: [
+                                                                            '#FF6384',
+                                                                            '#36A2EB',
+                                                                            '#FFCE56',
+                                                                            '#4BC0C0',
+                                                                            '#9966FF',
+                                                                            '#FF9F40'
+                                                                        ],
+                                                                    },
+                                                                ],
+                                                            }}
+                                                        />
 
-                            <Card className='TheCard'>
-                                <Card.Body>
-                                    <div className="App">
-                                        {col.length > 0 && val.length > 0 && (
-                                            <Pie
-                                                data={{
-                                                    labels: col,
-                                                    datasets: [
-                                                        {
-                                                            label: 'My Data',
-                                                            data: val.map(row => parseFloat(row[1])),
-                                                            backgroundColor: [
-                                                                '#FF6384',
-                                                                '#36A2EB',
-                                                                '#FFCE56',
-                                                                '#4BC0C0',
-                                                                '#9966FF',
-                                                                '#FF9F40'
-                                                            ],
-                                                        },
-                                                    ],
-                                                }}
-                                            />
-
-                                        )}
-                                    </div>
-                                </Card.Body>
-                            </Card>
+                                                    )}
+                                                </div>
+                                            </Card.Body>
+                                        </Card>
+                                    </>
+                                ) : (
+                                    <div></div>
+                                )}
+                            </div>
                         </Col>
                     </Row>
                 </Container>
