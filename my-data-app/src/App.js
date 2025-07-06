@@ -29,31 +29,6 @@ function App() {
 function MyCard() {
   return (
     <ReadString />
-    // <Container className='Container'>
-    //   <ReadString />
-    //   <Row>
-    //     <Col md={6} className="mx-auto">  {/* 4 out of 12 columns = 1/3 */}
-    //       <Card className='TheCard'>
-    //         <Card.Body>
-    //           <ReadString />
-    //           <Card.Title>1/3 Width Card</Card.Title>
-    //           <Card.Text>This is one-third of the row.</Card.Text>
-    //         </Card.Body>
-    //       </Card>
-    //     </Col>
-    //   </Row>
-
-    //   <Row>
-    //     <Col md={6} className="mx-auto">  {/* 4 out of 12 columns = 1/3 */}
-    //       <Card className='TheCard'>
-    //         <Card.Body>
-    //           <Card.Title>1/3 Width Card</Card.Title>
-    //           <Card.Text>This is one-third of the row.</Card.Text>
-    //         </Card.Body>
-    //       </Card>
-    //     </Col>
-    //   </Row>
-    // </Container>
   )
 }
 export default App;

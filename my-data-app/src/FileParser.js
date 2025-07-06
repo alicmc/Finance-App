@@ -14,13 +14,28 @@ export default function Reader() {
 
     return (
         <CSVReader
-            onUploadAccepted={(results) => {
-                const value = results.data;
-                const filtered = value.filter((_, i) => i !== 0);
-                setCol(value[0]);
-                setVal(filtered);
+            onUploadAccepted={({ data }) => {
+                // data is Array<Object>
+                if (!data.length) return;
+
+                // 1) Get headers as an array of strings
+                const headers = Object.keys(data[0]);
+
+                // 2) Group & sum
+                const grouped = data.reduce((acc, row) => {
+                    const desc = row.Category;
+                    const debit = parseFloat(row.Debit) || 0;
+                    acc[desc] = (acc[desc] || 0) + debit;
+                    return acc;
+                }, {});
+
+                // 3) Turn map into chart-friendly arrays
+                setCol(Object.keys(grouped));
+                setVal(Object.values(grouped));
+                console.log('labels:', col);
+                console.log('values:', val);
             }}
-            config={{ worker: true }}
+            config={{ worker: true, header: true }}
             noDrag
         >
             {({
@@ -66,6 +81,7 @@ export default function Reader() {
                                     <>
                                         <Card className='TheCard'>
                                             <Card.Body>
+                                                <p>Total: {val.reduce((a, b) => a + b, 0)}</p>
                                                 <div className="App">
                                                     {col.length > 0 && val.length > 0 && (
                                                         <Pie
@@ -74,7 +90,7 @@ export default function Reader() {
                                                                 datasets: [
                                                                     {
                                                                         label: 'My Data',
-                                                                        data: val.map(row => parseFloat(row[1])),
+                                                                        data: val,
                                                                         backgroundColor: [
                                                                             '#FF6384',
                                                                             '#36A2EB',
