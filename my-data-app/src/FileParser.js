@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
 import { useCSVReader, formatFileSize } from "react-papaparse";
+import Chart from "chart.js/auto";
+import { CategoryScale } from "chart.js";
+import { Pie } from 'react-chartjs-2';
+
+Chart.register(CategoryScale);
 
 export default function Reader() {
     const { CSVReader } = useCSVReader();
@@ -46,23 +51,30 @@ export default function Reader() {
                             <button>Upload file</button>
                         )}
                     </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                {col.length > 0 &&
-                                    col.map((col, i) => <th key={i}>{col}</th>)}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {val.map((val, i) => (
-                                <tr key={i}>
-                                    {val.map((v, i) => (
-                                        <td key={i}>{v}</td>
-                                    ))}
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                    <div className="App">
+                        {col.length > 0 && val.length > 0 && (
+                            <Pie
+                                data={{
+                                    labels: col,
+                                    datasets: [
+                                        {
+                                            label: 'My Data',
+                                            data: val.map(row => parseFloat(row[1])),
+                                            backgroundColor: [
+                                                '#FF6384',
+                                                '#36A2EB',
+                                                '#FFCE56',
+                                                '#4BC0C0',
+                                                '#9966FF',
+                                                '#FF9F40'
+                                            ],
+                                        },
+                                    ],
+                                }}
+                            />
+
+                        )}
+                    </div>
                 </>
             )}
         </CSVReader>

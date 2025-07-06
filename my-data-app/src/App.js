@@ -1,5 +1,5 @@
 import './App.css';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+
 import ReadString from './FileParser.js';
 
 function App() {
