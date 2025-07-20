@@ -1,39 +1,53 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
 .App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f8fbf6;
   text-align: center;
 }
 
 .App-header {
   background-color: #d8dfd4;
-  min-height: 10vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  padding: 1rem;
   color: white;
 }
 
 .App-body {
-  background-color: #f8fbf6;
-  min-height: 90vh;
-  min-width: 100%;
+  flex: 1;
+  padding: 2rem;
+  overflow: auto;
 }
 
 .App-foot {
   background-color: #d8dfd4;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100vw;
+  padding: 1rem 0;
+  width: 100%;
+  margin: 0;
 }
 
-.TheCard {
+.App-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.FinanceCard {
   margin: 1vh;
-  min-height: 20vh;
+  min-height: 15vh;
 }
 
 .chart-container {
   position: relative;
   width: 100%;
   height: 400px;
-  /* or whatever you need */
+}
+
+.DoughnutChart{
+  max-height: 80vh;
 }
